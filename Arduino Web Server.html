@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arduino Web Server</title>
+</head>
+<body>
+    <h1>Arduino Web Server</h1>
+    <h2>Toggle Buttons</h2>
+    {% for pin, details in pins.items() %}
+        <h3>{{ details.name }} is currently {% if details.state == 1 %}<strong>on</strong>{% else %}<strong>off</strong>{% endif %}</h3>
+        <div class="row">
+            <div class="col-md-2">
+                {% if details.state == 1 %}
+                    <a href="/{{ pin }}/off" class="btn btn-block btn-lg btn-default" role="button">Turn off</a>
+                {% else %}
+                    <a href="/{{ pin }}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <h2>Commands</h2>
+    <h3>LED pin 2: <a href="/action1">TURN ON</a></h3>
+    <h3>LED pin 2: <a href="/action2">TURN OFF</a></h3>
+    <h3>LED pin 3: <a href="/action3">TURN ON</a></h3>
+    <h3>LED pin 3: <a href="/action4">TURN OFF</a></h3>
+</body>
+</html>
